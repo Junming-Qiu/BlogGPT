@@ -1,0 +1,11 @@
+{% extends 'base.html.j2'%}
+
+{% block content %}
+
+    <div class='post'>
+        <p>{{ post['created'] }}</p>
+        <p>{{post['author']}}</p>
+        <h2>{{ post['title'] }}</h2>
+        <p>{{ post['content'] }}</p>
+    </div>
+{% endblock %}
