@@ -1,0 +1,16 @@
+{% extends 'base.html.j2' %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <div class='post'>
+            <p><i>{{ post['created'] }}</i></p>
+            <h3>{{post['author']}}</h3>
+            <h5>In: {{post['category']}}</h5>
+            <img src="{{post['img_link']}}"/>
+            <div><a href="/blog/{{post['id']}}">{{ post['title'] }}</a></div>
+            <p>{{ post['content'][:500]}}...</p>
+            
+        </div>
+    {% endfor %}
+{% endblock %}

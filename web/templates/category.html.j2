@@ -1,0 +1,16 @@
+{% extends 'base.html.j2' %}
+
+{% block content %}
+<div class="post">
+    <h2>Blog Categories</h2>
+    <div class="categories">
+    {%for category in categories%}
+        <div class="category_item"><a href="/categories/{{category[0]}}">{{category[0]}}</a></div>
+    {%endfor%}
+    </div>
+
+</div>
+
+
+
+{%endblock%}

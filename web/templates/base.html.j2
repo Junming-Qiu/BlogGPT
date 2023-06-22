@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    
+</head>
+<body>
+    <nav>
+        <a class="title" href="{{ url_for('index') }}">BlogGPT</a>
+        <a class="navitem" href="{{ url_for('render_categories') }}">Categories</a>
+        <a class="navitem" href="{{ url_for('about') }}">About</a>
+        <hr>
+    </nav>
+
+    
+    
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

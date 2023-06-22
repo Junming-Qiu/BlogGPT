@@ -17,7 +17,6 @@ def index():
     query = 'SELECT * FROM posts'
     posts = conn.execute(query).fetchall()
     conn.close()
-    posts = zip(posts, [i+1 for i in range(len(posts))])
 
     return render_template('index.html.j2', posts=posts)   
 
@@ -31,5 +30,26 @@ def render_blog_page(blogID):
     query = f'SELECT * from posts WHERE id={blogID}'
 
     post = conn.execute(query).fetchall()
+    if len(post) == 0:
+        return redirect('/')
      
     return render_template('blog_page.html.j2', post=post[0])
+
+@app.route('/categories')
+def render_categories():
+    conn = get_db_connection()
+    query = f'SELECT DISTINCT category FROM posts'
+
+    categories = conn.execute(query).fetchall()
+
+    return render_template('category.html.j2', categories=categories)
+
+@app.route('/categories/<string:category>')
+def search_category(category):
+    print(category)
+    conn = get_db_connection()
+    query = f"SELECT * FROM posts WHERE category='{category}'"
+
+    posts = conn.execute(query).fetchall()
+
+    return render_template('index.html.j2', posts=posts)

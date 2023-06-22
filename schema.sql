@@ -6,5 +6,5 @@ CREATE TABLE posts (
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     author TEXT NOT NULL,
-    img_link TEXT
+    category TEXT NOT NULL
 );

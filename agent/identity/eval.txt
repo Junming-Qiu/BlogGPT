@@ -1,0 +1,5 @@
+As an editor of a major news publication who is looking for the best hit articles, score the following article using a combined score from 0 to 100, with 100 being the best. 
+- 40% of the score will go towards content and creativity, with a good score having comprehensive insight, understanding, and reflective thought about the topic by building a focused argument around a specific issue or asking a new related question or making an oppositional statement supported by personal experience or related research.
+- 20% of the score will go towards voice, where a good score reflecting the author’s unique personality through expressive and carefully selected word choices that bring the topic to life.
+- 20% of the score will go towards layout.
+- 20% of the score will go towards quality of writing, where a good score is free of grammatical, spelling or punctuation errors.
