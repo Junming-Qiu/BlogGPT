@@ -56,14 +56,14 @@ class Agent:
         time.sleep(0.2)
 
         # Author name
-        author = self.get_completion(f"Give me a random name of a blog author relating to the title: '{title}'", 0.8)
+        author = self.get_completion(f"Give me a random name of a blog author relating to the title: '{title}'. Do not include the title in the response", 0.8)
         logger.debug(f"Author: {author}")
         time.sleep(0.2)
 
         # Generate content
         content = self.get_completion(f"{self.identity['init']} Knowing this, given the title: '{title}', generate me a well written blog post.", 0.2)
-        category = self.get_completion(f"What is the category of this blog post: '{content}'. Give me one category only delimited in single tick quotations.").strip("'\"")
-        img_prompt = self.get_completion(f"Generate a realistic prompt for an image generation model based off the title: '{title}'. Use 250 characters maximum")
+        category = self.get_completion(f"What is the category of this blog post: '{content}'. Give me one category from the following: {self.identity['categories']}").strip("'\"")
+        img_prompt = self.get_completion(f"Generate a realistic prompt for an image generation model based off the title: '{title}'. Use 200 characters maximum. Image does not include text")
         img_link = self.get_image(img_prompt)
 
         img_name = title.replace(' ', '_')
@@ -97,7 +97,7 @@ class Agent:
 
             feedback = self.get_completion(f"{self.identity['eval']} Give constructive feedback. Article: '{revision}'")
             time.sleep(0.2)
-            revision = self.get_completion(f"Given the text: '{revision}' and the feedback: '{feedback}', revise the article.")
+            revision = self.get_completion(f"Given the text: '{revision}' and the feedback: '{feedback}', revise the article. Only give the revision. Do not include the feedback or disclaimers in the response")
             logger.debug(feedback)
 
         revision = revision.replace("\n", "<br/>")
@@ -108,14 +108,19 @@ class Agent:
 # Grab GPT prompts
 def main():
     identity = {}
-    with open(f'{os.path.dirname(__file__)}/identity/init.txt', 'r') as f:
+    path = f"{os.path.dirname(__file__)}/identity"
+
+    with open(f'{path}/init.txt', 'r') as f:
         identity['init'] = f.read()
 
-    with open(f'{os.path.dirname(__file__)}/identity/negatives.txt', 'r') as f:
+    with open(f'{path}/negatives.txt', 'r') as f:
         identity['negatives'] = f.read()
 
-    with open(f'{os.path.dirname(__file__)}/identity/eval.txt', 'r') as f:
+    with open(f'{path}/eval.txt', 'r') as f:
         identity['eval'] = f.read()
+
+    with open(f'{path}/categories.txt') as f:
+        identity['categories'] = f.read()
 
     a = Agent('database.db', identity)
     a.run()

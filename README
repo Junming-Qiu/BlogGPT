@@ -1,5 +1,26 @@
 # BlogGPT
 ### A blog article generator using chatGPT. 
-- Generate blog articles from scratch
-- Generate dalle prompts to add pictures (may add pictures in future)
+- Generate blog articles from scratch (Done)
+- Generate dalle prompts to add pictures (Done)
 - Take in text to "inspire" an article
+  - Youtube transcript api
+  - News api
+    - Summarize "your daily news" in a concise article 
+  - Other sources of content
+    - Create personalized page with recommendations and suggestions (add user accounts, personalize posts for user based on the keywords they want)
+  - Build context through custom search queries on google
+  - Improve GPT prompts and their output formatting to get more consistent results
+  
+
+## How to run:
+#### Create venv and install packages
+    python -m venv venv
+    python install -r requirements.txt
+#### Initialize the database
+    python init_db.py
+#### Run flask server
+    python web/app.py
+#### Begin generating blog articles!
+    python agent/agent.py
+
+- ### You can modify the behavior of the generation in agent/identity
