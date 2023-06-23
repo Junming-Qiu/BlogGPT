@@ -33,3 +33,17 @@ nav .navitem {
   padding: 5px;
   border-radius: 5px;
 }
+
+.blog_post {
+  text-align: center;
+  
+}
+
+.blog_post img {
+  float: left;
+  margin: 1.5%
+}
+
+.blog_post p {
+  text-align: left;
+}

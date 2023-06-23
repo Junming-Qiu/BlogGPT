@@ -7,7 +7,7 @@
             <p><i>{{ post['created'] }}</i></p>
             <h3>{{post['author']}}</h3>
             <h5>In: {{post['category']}}</h5>
-            <img src="{{post['img_link']}}"/>
+            <img src="{{post['img_path']}}" height="250" alt=" "/>
             <div><a href="/blog/{{post['id']}}">{{ post['title'] }}</a></div>
             <p>{{ post['content'][:500]}}...</p>
             
